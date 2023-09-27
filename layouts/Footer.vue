@@ -56,7 +56,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
-                        <p>Copyright &copy; 2022 AtipikHouse. Tout droit reservés</p>
+                        <p>Copyright &copy; 2022 Atypikhouse. Projet de fin d'année d'étude.</p>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <ul class="payment-card">
