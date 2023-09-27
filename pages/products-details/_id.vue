@@ -144,3 +144,60 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+/* Styles pour la page de détails du produit */
+
+/* Styles pour la zone du titre de la page */
+.page-title-area {
+  background-color: #f4f4f4;
+  padding: 20px 0;
+}
+
+.page-title-area ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page-title-area ul li {
+  display: inline;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* Styles pour la section principale des détails du produit */
+.products-details-area {
+  padding: 60px 0;
+}
+
+/* Styles pour les composants enfants */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Styles pour le composant ProductImages */
+.product-images {
+  flex: 0 0 45%; /* Largeur de 45% */
+}
+
+/* Styles pour le composant Details */
+.details {
+  flex: 0 0 30%; /* Largeur de 30% */
+}
+
+/* Styles pour le composant DetailsInfo */
+.details-info {
+  flex: 0 0 20%; /* Largeur de 20% */
+}
+
+/* Styles pour le composant RelatedProducts */
+.related-products {
+  flex: 0 0 100%;
+  margin-top: 20px;
+}
+
+/* Ajoutez d'autres styles au besoin */
+</style>

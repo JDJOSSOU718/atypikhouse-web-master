@@ -7,7 +7,7 @@
                         <div class="logo">
                             <nuxt-link to="/"><img src="../assets/img/logo.png" alt="logo"></nuxt-link>
                         </div>
-                        <p>Louer et Reserver des habitats facilement et rapidement!</p>
+                        <p>Explorez une sélection unique de logement et réservez votre bien insolite de manière simple et rapide !</p>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
-                        <p>Copyright &copy; 2022 Atypikhouse. Projet de fin d'année d'étude.</p>
+                        <p class="centered-text">Copyright &copy; 2022 Atypikhouse. Projet de fin d'année d'étude.</p>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <ul class="payment-card">
@@ -72,3 +72,31 @@
         </div>
     </footer>
 </template>
+
+<style scoped>
+/* Pour aligner les divs "Liens rapides", "Information" et "Contact" sur la même ligne */
+
+
+/* Ajustez les styles des colonnes pour qu'elles occupent toute la largeur */
+.single-footer-widget {
+  flex: 1;
+}
+
+/* Ajustez les marges internes pour les éléments de chaque colonne */
+.single-footer-widget ul,
+.single-footer-widget p {
+  margin: 0;
+}
+
+/* Appliquer la couleur verte aux titres h3 "Information", "Contact" et "Liens rapides" */
+.single-footer-widget h3 {
+  color: #8bc34a; /* Couleur verte correspondant au logo */
+}
+
+.centered-text {
+    text-align: center;
+    
+}
+
+
+</style>

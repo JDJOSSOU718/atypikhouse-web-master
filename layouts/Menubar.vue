@@ -29,7 +29,7 @@
                 </li>
                 <li class="nav-item">
                   <nuxt-link to="/devenir-partenaire" class="nav-link">
-                    A propos
+                    Partenariat
                   </nuxt-link>
                 </li>
                 <li class="nav-item">
@@ -38,6 +38,9 @@
                   </nuxt-link>
                 </li>
               </ul>
+
+
+            
 
               <div class="others-option">
                 
