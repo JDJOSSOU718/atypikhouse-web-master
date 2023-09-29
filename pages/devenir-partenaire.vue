@@ -4,17 +4,14 @@
     <Menubar />
 
     <!-- Section: Bannière -->
-    <section class="banner-section">
-      <Banner />
-    </section>
-
+      <Banner class="banner-section"/>
     
-    <!-- Section: Statistiques (Noir) -->
-    <section class="statistics-section black-bg large-number-plus" @scroll="onScroll">
+    <!-- Section: Statistiques -->
+    <section class="statistics-section black-bg large-number-plus">
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-center ">
           <div v-for="(statistic, index) in statistics" :key="index" class="col-md-4">
-            <div class="statistic" ref="statistics[index]">
+            <div class="statistic col-md-4">
               <count-up
                 :start-val="0"
                 :end-val="statistic.value"
@@ -22,36 +19,36 @@
                 @ready="onCountUpReady(statistic)"
                 @end="onCountUpEnd(statistic)"
               >
-                <template slot-scope="{ countDecimal, countDone }">
-                  <!-- La valeur animée -->
-                  <h1 :class="{ 'large-number-plus': countDone }">{{ countDecimal }}</h1>
-                </template>
-              </count-up>
-              <p>{{ statistic.label }}</p>
+                <!-- La valeur animée -->
+                <h1 :class="{ 'large-number-plus':value }">+{{ none }}</h1>
+                </count-up>
+                <p class="exist">{{ statistic.label }}</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  
+      </section>
 
-    <!-- Section: À Propos (Noir clair) -->
-    <section class="about-section light-black-bg">
-      <div class="row">
-        <div class="col-md-7">
-          <img src="../assets/img/qui.jpg" alt="">
-        </div>
-        <div class="col-md-5 p-4 p-xs-0">
-          <h3>QUI SOMMES-NOUS ?</h3>
-          <p>Basée dans le Sud de la France, Atypikhouse est leader sur le marché de l'insolite et référence des hébergements atypiques partout sur son territoire, et même à l'étranger !</p>
-          <h6>NOS VALEURS</h6>
-          <p>Chez Atypikhouse, nous plaçons la relation avec les propriétaires au cœur du partenariat. Notre collaboration avec les hébergeurs est basée sur le respect des intérêts de chacun, tout en laissant la liberté et l'indépendance nécessaires à leur activité. Une équipe de professionnels du tourisme, spécialisés dans le secteur de l'insolite, vous propose un service réactif et efficace qui se veut humain, qualitatif et adapté.</p>
-        </div>
+      <!-- Section: À Propos (Noir clair) -->
+<section class="about-section light-black-bg">
+  <div class="container">
+    <div class="row align-items-center"> <!-- Utilisation de 'align-items-center' pour aligner verticalement les éléments -->
+      <div class="col-md-4">
+        <img src="../assets/img/qui.jpg" alt="">
       </div>
-    </section>
+      <div class="col-md-8"> <!-- Utilisation de 'col-md-8' pour définir la largeur de la colonne du texte sur les écrans larges -->
+        <h1 class="about-section ">QUI SOMMES-NOUS ?</h1> <!-- Utilisation de la classe 'green-text' pour appliquer la couleur verte -->
+        <p>Basée dans le Sud de la France, Atypikhouse est leader sur le marché de l'insolite et référence des hébergements atypiques partout sur son territoire, et même à l'étranger !</p>
+        <h6>NOS VALEURS</h6>
+        <p>Chez Atypikhouse, nous plaçons la relation avec les propriétaires au cœur du partenariat. Notre collaboration avec les hébergeurs est basée sur le respect des intérêts de chacun, tout en laissant la liberté et l'indépendance nécessaires à leur activité. Une équipe de professionnels du tourisme, spécialisés dans le secteur de l'insolite, vous propose un service réactif et efficace qui se veut humain, qualitatif et adapté.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Section: Concept (Noir) -->
-  <section class="concept-section black-bg">
+  <section class="concept-section black-bg " >
     <div class="container">
       <h1 class="concept-title">LE CONCEPT</h1>
       <div class="row">
@@ -81,53 +78,55 @@
   </section>
 
     <!-- Section: Éligibilité (Noir clair) -->
-    <section class="eligibility-section light-black-bg">
-      <div class="container">
-        <h1 class="eligibility-titles"> VOTRE OFFRE EST-ELLE ÉLIGIBLE ?</h1>
-        <div class="eligibility-tests">
-          <!-- Premier test -->
-          <div class="eligibility-test">
-            <div class="test-content">
-              <img src="../assets/img/dimension.png" alt="dimension" class="test-image">
-              <h3>Dimension insolite</h3>
-              <p>Votre hébergement doit être privatif et proposer une expérience atypique grâce à sa typologie et/ou son concept. Les internautes recherchent un séjour unique avec des services et activités de qualité !</p>
-            </div>
-          </div>
-
-          <!-- Deuxième test -->
-          <div class="eligibility-test">
-            <div class="test-content">
-              <img src="../assets/img/environnement.png" alt="Image 2" class="test-image">
-              <h3>Environnement privilégié</h3>
-              <p>Loin des sentiers battus, l'hébergement proposé doit être implanté dans un cadre préservé. Il s'agit de partager avec les voyageurs un cadre hors du commun ou un site d'exception !</p>
-            </div>
-          </div>
-
-          <!-- Troisième test -->
-          <div class="eligibility-test">
-            <div class="test-content">
-              <img src="../assets/img/offre.png" alt="Image 3" class="test-image">
-              <h3>Une offre et des tarifs cohérents</h3>
-              <p>Les tarifs et conditions doivent être en adéquation avec le marché et notre cible de clientèle. Il s’agit de présenter une offre et des prestations cohérentes et justes pour le client.</p>
-            </div>
-          </div>
-
-          <!-- Quatrième test -->
-          <div class="eligibility-test">
-            <div class="test-content">
-              <img src="../assets/img/qualite.png" alt="Image 4" class="test-image">
-              <h3>Qualité de la collaboration</h3>
-              <p>L'hébergeur doit témoigner d'une réelle envie d'être partenaire de notre réseau : un bon contact, de la réactivité et du professionnalisme sont des éléments primordiaux à la collaboration !</p>
-            </div>
-          </div>
+<section class="eligibility-section light-black-bg">
+  <div class="container">
+    <h1 class="eligibility-titles text-center font-weight-bold" style="color: #33cc33;">VOTRE OFFRE EST-ELLE ÉLIGIBLE ?</h1>
+    <div class="eligibility-tests row">
+      <!-- Premier test -->
+      <div class="col-md-6">
+        <div class="eligibility-test">
+          <img src="../assets/img/dimension.png" alt="Dimension insolite" class="test-image">
+          <h3 style="color: #8bc34a;">Dimension insolite</h3>
+          <p>Votre hébergement doit être privatif et proposer une expérience atypique grâce à sa typologie et/ou son concept. Les internautes recherchent un séjour unique avec des services et activités de qualité !</p>
         </div>
       </div>
-    </section>
+
+      <!-- Deuxième test -->
+      <div class="col-md-6">
+        <div class="eligibility-test">
+          <img src="../assets/img/environnement.png" alt="Environnement privilégié" class="test-image">
+          <h3 style="color: #8bc34a;">Environnement privilégié</h3>
+          <p>Loin des sentiers battus, l'hébergement proposé doit être implanté dans un cadre préservé. Il s'agit de partager avec les voyageurs un cadre hors du commun ou un site d'exception !</p>
+        </div>
+      </div>
+
+      <!-- Troisième test -->
+      <div class="col-md-6">
+        <div class="eligibility-test">
+          <img src="../assets/img/offre.png" alt="Une offre et des tarifs cohérents" class="test-image">
+          <h3 style="color: #8bc34a;">Une offre et des tarifs cohérents</h3>
+          <p>Les tarifs et conditions doivent être en adéquation avec le marché et notre cible de clientèle. Il s’agit de présenter une offre et des prestations cohérentes et justes pour le client.</p>
+        </div>
+      </div>
+
+      <!-- Quatrième test -->
+      <div class="col-md-6">
+        <div class="eligibility-test">
+          <img src="../assets/img/qualite.png" alt="Qualité de la collaboration" class="test-image">
+          <h3 style="color: #8bc34a;">Qualité de la collaboration</h3>
+          <p>L'hébergeur doit témoigner d'une réelle envie d'être partenaire de notre réseau : un bon contact, de la réactivité et du professionnalisme sont des éléments primordiaux à la collaboration !</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
     <!-- Section: Ce que l'on vous apporte (Noir) -->
     <section class="what-we-offer-section black-bg">
       <div class="container">
-        <h2 class="what-we-offer-title">CE QUE L'ON VOUS APPORTE</h2>
+        <h1 class="what-we-offer-title">CE QUE L'ON VOUS APPORTE</h1>
         <div class="row">
           <div class="col-md-4">
             <div class="what-we-offer-item">
@@ -180,20 +179,17 @@
             <div class="what-we-offer-item">
               <i class="fas fa-bullhorn what-we-offer-icon"></i>
               <p class="what-we-offer-description">
-                <p class="what-we-description-tilet">SERVICE MARKETING ET PRESSE*</p>
+                <p class="what-we-description-title">SERVICE MARKETING ET PRESSE*</p>
                 Une communauté de 150 000 followers sur nos réseaux sociaux. * Sous conditions
               </p>
             </div>
           </div>
         </div>
       </div>
-    </section>
+      </section>
+      <!-- Section: Comment ça marche (Noir) -->
 
-    <template>
-  <!-- ... Autres éléments de votre modèle ... -->
-
-  <!-- Section: Comment ça marche (Noir) -->
-  <section class="how-it-works-section light-black-bg">
+      <section class="how-it-works-section light-black-bg">
       <h1>COMMENT ÇA MARCHE ?</h1>
 
       <details>
@@ -248,21 +244,9 @@
         </p>
         <i class="fas fa-wallet fa-3x"></i>
       </details>
-    </section>
+     </section>
+   </div>
 
-  <!-- ... Autres éléments de votre modèle ... -->
-</template>
-
-    <!-- Section: Installations (Noir clair) -->
-    <section class="facility-section light-black-bg">
-      <Facility />
-    </section>
-
-    <!-- Section: Témoignages (Noir) -->
-    <section class="testimonials-section black-bg">
-      <Testimonials />
-    </section>
-  </div>
 </template>
 
 <script>
@@ -366,7 +350,7 @@ export default {
 /* Style pour les icônes */
 .concept-icon {
   font-size: 4rem;
-  color: #f3f6f3; /* Couleur verte pour les icônes */
+  color: #f3f6f3; /* Couleur pour les icônes */
   margin-bottom: 10px;
 }
 
@@ -380,7 +364,7 @@ export default {
 
 /* Style pour les descriptions */
 .concept-item p {
-  font-size: 1rem;
+  font-size: none;
   color: #555;
 }
 
@@ -401,54 +385,37 @@ export default {
 }
 
 .eligibility-tests {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Deux colonnes par ligne */
-  grid-gap: 20px; /* Espacement entre les éléments */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .eligibility-test {
-  display: flex;
-  align-items: center; /* Centrer verticalement */
+  flex: 1;
+  text-align: left;
+  padding: 20px;
 }
 
 .test-image {
-  width: 100px; /* Ajustez la largeur de l'image */
-  height: 100px; /* Ajustez la hauteur de l'image */
-  border-radius: 50%; /* Pour obtenir une forme de cercle */
-  margin-right: 20px; /* Espacement à droite de l'image */
-}
-
-.test-content {
-  text-align: left; /* Alignement du texte à gauche */
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  margin-right: 20px;
 }
 
 .eligibility-test h3 {
-  font-size: 1.2rem; /* Ajustez la taille de la police du titre */
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #8bc34a; /* Couleur verte pâle pour les sous-titres */
-  margin-bottom: 10px; /* Espacement en bas du titre */
+  color: #8bc34a;
+  margin-bottom: 10px;
 }
+
 .eligibility-titles {
-  font-size: 2,5rem; /* Ajustez la taille de la police du titre */
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #33cc33; /* Couleur du titre en vert */
-  margin-bottom: 10px; /* Espacement en bas du titre */
-}
-
-
-
-.eligibility-test p {
-  font-size: 1rem; /* Taille du texte des tests */
-  color: #555; /* Couleur du texte des tests */
-}
-
-/* Styles pour les images avec contour de cercle */
-.eligibility-test img {
-  width: 80px; /* Largeur des images */
-  height: 80px; /* Hauteur des images */
-  border-radius: 50%; /* Contour de cercle */
-  border: 2px solid; /* Bordure verte pâle */
-  margin-bottom: 10px; /* Espacement sous les images */
+  color: #33cc33;
+  margin-bottom: 10px;
 }
 
 /* Styles spécifiques à la section "CE QUE L'ON VOUS APPORTE" */
@@ -467,7 +434,7 @@ export default {
 }
 
 .what-we-description-title {
-  font-size: 1rem;
+  font-size: 1,5rem;
   font-weight: bold;
   color: #8bc34a; /* Couleur verte pale */
 }
@@ -476,7 +443,7 @@ export default {
 .what-we-offer-item {
   margin-bottom: 20px; /* Espacement entre les éléments */
   text-align: left; /* Aligner le texte à gauche */
-  color: #555;
+  color: none;
   
 }
 
@@ -487,35 +454,32 @@ export default {
   margin-bottom: 10px; /* Espacement en bas de l'icône */
 }
 
-/* Style pour les descriptions */
-.what-we-offer-description {
-  font-size: 1rem; /* Taille de la police des descriptions */
-  color: #8bc34a; /* Couleur verte pâle pour les sous-titres */
-  margin-bottom: 20px; /* Espacement en bas de la description */
-}
-
-
-/* Agrandir la taille de la section */
+/* Style pour la section des statistiques */
 .statistics-section {
   background-color: #000; /* Couleur de fond noir */
   color: #fff; /* Couleur du texte blanc */
   padding: 50px 0; /* Ajustez la hauteur de la section en ajoutant du padding */
+  text-align: center; /* Centrez le contenu horizontalement */
+  overflow: hidden; /* Masque tout contenu débordant de la section */
 }
 
-/* Agrandir la taille des nombres */
-.large-number-plus {
-  font-size: 3rem; /* Ajustez la taille de la police (4rem pour cet exemple, ajustez selon vos besoins) */
-  font-weight: bold; /* Mettez les chiffres en caractères gras */
+/* Ajustez la taille des nombres */
+.large-number-plus  {
+  font-size: 3rem; /* Taille de la police pour les chiffres */
+  font-weight: bold; /* Texte en gras */
   color: #33cc33; /* Couleur verte ou votre choix */
-  margin-bottom: 20px; /* Espacement en bas des nombres */
-  transform: scale(1.1); /* Ajustez l'échelle pour augmenter la taille si nécessaire */
-  transition: transform 10s; /* Animation de transition avec une durée de 10 secondes */
+  margin-bottom: none; /* Espacement en bas des nombres */
+}
+
+.exist{
+  font-size:none;
+  font-weight:none;
 }
 
 
 /* Style général pour la section */
 .how-it-works-section {
-  background-color: #f2f2f2; /* Noir clair */
+  background-color: #111; /* Noir clair */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -523,11 +487,16 @@ export default {
   text-align: center;
 }
 
+.how-it-works-section h1{
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
 /* Style pour chaque élément cliquable (details) */
 details {
   cursor: pointer;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #141313;
   border-radius: 5px;
   transition: background-color 0.3s;
   margin-bottom: 10px;
@@ -539,7 +508,7 @@ details {
 }
 
 details:hover {
-  background-color: #d3e6cb; /* Vert pâle plus foncé au survol */
+  background-color: #3f6d2b; /* Vert pâle plus foncé au survol */
 }
 
 /* Style pour le texte à l'intérieur de details */
@@ -550,7 +519,7 @@ details p {
 
 /* Style pour les icônes */
 i {
-  color: rgb(55, 54, 54);
+  color: rgb(247, 244, 244);
   margin: 10px; /* Espacement autour de l'icône */
   flex-shrink: 0; /* Empêche les icônes de rétrécir */
 }
@@ -570,8 +539,55 @@ details[open] {
 
 /* Style pour les détails ouverts */
 details[open] {
-  background-color: #d3e6cb; 
+  background-color: #111; 
 }
 
+/* Ajoutez des media queries pour la mise en page responsive */
+
+@media (max-width: 768px) {
+  /* Styles pour les écrans de largeur maximale 768px */
+  .col-md-4 {
+    width: 100%; /* Largeur de 100% pour les colonnes sur les petits écrans */
+    margin-bottom: 20px; /* Espacement entre les colonnes */
+  }
+}
+
+@media (max-width: 992px) {
+  /* Styles pour les écrans de largeur maximale 992px */
+  .about-section .row {
+    flex-direction: column-reverse; /* Inverser l'ordre des colonnes */
+    align-items: center; /* Centrer les éléments */
+  }
+}
+
+.banner-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Cela assure que la section occupe au moins toute la hauteur de la fenêtre */
+}
+
+
+
+.about-section h1{
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #33cc33;;
+  margin-top: 10px;
+}
+
+.about-section h6{
+  font-weight: bold;
+  font-size: 1,5rem;
+  color: #33cc33;;
+  margin-top: 10px;
+}
+
+.about-section p{
+  font-weight:none;
+  font-size:none;
+  color:none;
+  margin-top:none;
+}
 
 </style>
