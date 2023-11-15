@@ -23,7 +23,7 @@ export default {
                 hid: 'og:site_name',
                 name: 'og:site_name',
                 content: 'Atypikhouse'
-            },
+            }
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
@@ -33,9 +33,7 @@ export default {
                     'https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap'
             }
         ],
-        script: [
-            { src: 'https://js.stripe.com/v3'}
-        ]
+        script: [{ src: 'https://js.stripe.com/v3' }]
     },
     /*
      ** Add server middleware
@@ -75,22 +73,22 @@ export default {
         // moment
         '@nuxtjs/moment',
         // sitemap
-        '@nuxtjs/sitemap',
+        process.env.ENV == 'production' ? '@nuxtjs/sitemap' : '',
         // recaptcha
         '@nuxtjs/recaptcha',
         // robots
-        '@nuxtjs/robots'
+        process.env.ENV == 'production' ? '@nuxtjs/robots' : ''
     ],
     /**
      * PWA config
-     * 
+     *
      */
-     pwa: {
-        icon: true 
+    pwa: {
+        icon: true
     },
     /**
      * Moment options
-     * 
+     *
      */
     moment: {
         locales: ['fr'],
@@ -118,52 +116,47 @@ export default {
     axios: {
         proxy: true,
         baseUrl: 'http://localhost:4000',
-        browserBaseURL: 'http://localhost:4000',
+        browserBaseURL: 'http://localhost:4000'
     },
     /**
-     * 
+     *
      * Sitemap config
      */
     sitemap: {
         hostname: process.env.BASE_URL_SITEMAP,
         gzip: true,
-        exclude: [
-            '/admin',
-          '/admin/**'
-        ],
+        exclude: ['/admin', '/admin/**']
         // routes: []
     },
 
     /**
-     * 
+     *
      * robots
      * 
-    */
+     *
+     */
     robots: {
-        Disallow: [
-          '/login',
-          '/admin',
-        ],
+        Disallow: ['/login', '/admin'],
         Sitemap: `${process.env.BASE_URL_SITEMAP}/sitemap.xml`
     },
     /**
      * recpatcha options
-     * 
+     *
      */
 
     recaptcha: {
-        hideBadge: false, 
-        language: 'fr',   
-        mode: 'base',       
-        siteKey: process.env.RECPATCHA_PK,    
-        version: 2,    
+        hideBadge: false,
+        language: 'fr',
+        mode: 'base',
+        siteKey: process.env.RECPATCHA_PK,
+        version: 2,
         size: 'normal'
     },
     /*
      ** Globally configure <nuxt-link> default active class.
      */
     router: {
-        linkActiveClass: 'active',
+        linkActiveClass: 'active'
     },
     /**
      *
