@@ -1,28 +1,27 @@
 export default {
-    mode: 'universal',
-    /*
-     ** Headers of the page
-     */
+    components: [
+        '~/components', // le chemin peut varier en fonction de votre structure
+    ],
     head: {
         htmlAttrs: {
-            lang: 'fr'
+            lang: 'fr',
         },
         title: 'Atipikhouse',
         meta: [
             { charset: 'utf-8' },
             {
                 name: 'viewport',
-                content: 'width=device-width, initial-scale=1'
+                content: 'width=device-width, initial-scale=1',
             },
             {
                 hid: 'apple-mobile-web-app-title',
                 name: 'apple-mobile-web-app-title',
-                content: 'Atypikhouse'
+                content: 'Atypikhouse',
             },
             {
                 hid: 'og:site_name',
                 name: 'og:site_name',
-                content: 'Atypikhouse'
+                content: 'Atypikhouse',
             },
         ],
         link: [
@@ -30,78 +29,40 @@ export default {
             {
                 rel: 'stylesheet',
                 href:
-                    'https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap'
-            }
+                    'https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap',
+            },
         ],
-        script: [
-            { src: 'https://js.stripe.com/v3'}
-        ]
+        script: [{ src: 'https://js.stripe.com/v3' }],
     },
-    /*
-     ** Add server middleware
-     ** Nuxt.js uses `connect` module as server
-     ** So most of express middleware works with nuxt.js server middleware
-     */
     serverMiddleware: [],
-    /*
-     ** Customize the progress-bar colors
-     */
     loading: '~/components/LoadingBar.vue',
-    /*
-     ** Plugins to load before mounting the App
-     */
     plugins: [
         { src: '~/plugins/vue-carousel', ssr: false },
         { src: '~/plugins/vue-backtotop', ssr: false },
         { src: '~/plugins/vue-toastification', ssr: false },
         { src: '~/plugins/vueperslides', ssr: false },
         { src: '~/plugins/vue-calendar', ssr: false },
-        { src: '~/plugins/vue-stripe', ssr: false }
+        { src: '~/plugins/vue-stripe', ssr: false },
     ],
-    /*
-     ** Nuxt.js dev-modules
-     */
     buildModules: ['@nuxtjs/pwa'],
-    /*
-     ** Nuxt.js modules
-     */
     modules: [
-        // Doc: https://bootstrap-vue.js.org
         'bootstrap-vue/nuxt',
-        // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
-        // dotenv
         '@nuxtjs/dotenv',
-        // moment
         '@nuxtjs/moment',
-        // sitemap
         '@nuxtjs/sitemap',
-        // recaptcha
         '@nuxtjs/recaptcha',
-        // robots
-        '@nuxtjs/robots'
+        '@nuxtjs/robots',
     ],
-    /**
-     * PWA config
-     * 
-     */
-     pwa: {
-        icon: true 
+    pwa: {
+        icon: true,
     },
-    /**
-     * Moment options
-     * 
-     */
     moment: {
         locales: ['fr'],
         defaultLocale: 'fr',
         timezone: true,
-        defaultTimezone: 'Europe/Paris'
+        defaultTimezone: 'Europe/Paris',
     },
-    /*
-    /*
-    ** Global CSS
-    */
     css: [
         './assets/scss/styles/animate.min.css',
         './assets/scss/styles/bootstrap.min.css',
@@ -109,76 +70,45 @@ export default {
         './assets/scss/styles/style.css',
         './assets/scss/styles/admin.css',
         './assets/scss/styles/responsive.css',
-        './assets/scss/styles/multiselect.css'
+        './assets/scss/styles/multiselect.css',
     ],
-    /** Axios module configuration
-     ** See https://axios.nuxtjs.org/options
-     ** Add .
-     */
     axios: {
         proxy: true,
         baseUrl: 'http://localhost:4000',
         browserBaseURL: 'http://localhost:4000',
     },
-    /**
-     * 
-     * Sitemap config
-     */
     sitemap: {
         hostname: process.env.BASE_URL_SITEMAP,
         gzip: true,
-        exclude: [
-            '/admin',
-          '/admin/**'
-        ],
-        // routes: []
+        exclude: ['/admin', '/admin/**'],
     },
-
-    /**
-     * 
-     * robots
-     * 
-    */
     robots: {
-        Disallow: [
-          '/login',
-          '/admin',
-        ],
-        Sitemap: `${process.env.BASE_URL_SITEMAP}/sitemap.xml`
+        Disallow: ['/login', '/admin'],
+        Sitemap: `${process.env.BASE_URL_SITEMAP}/sitemap.xml`,
     },
-    /**
-     * recpatcha options
-     * 
-     */
-
     recaptcha: {
-        hideBadge: false, 
-        language: 'fr',   
-        mode: 'base',       
-        siteKey: process.env.RECPATCHA_PK,    
-        version: 2,    
-        size: 'normal'
+        hideBadge: false,
+        language: 'fr',
+        mode: 'base',
+        siteKey: process.env.RECPATCHA_PK,
+        version: 2,
+        size: 'normal',
     },
-    /*
-     ** Globally configure <nuxt-link> default active class.
-     */
     router: {
         linkActiveClass: 'active',
     },
-    /**
-     *
-     * server config
-     */
     server: {
-        port: 8080
+        port: 8080,
     },
-    /*
-     ** Build configuration
-     */
     build: {
-        /*
-         ** You can extend webpack config here
-         */
-        extend(config, ctx) {}
-    }
-}
+        extend(config, ctx) {},
+    },
+};
+
+// Add console logs for testing purposes
+console.log ('Merged Nuxt.js configuration loaded successfully!');
+console.log('Server port:', 8080);
+console.log('Axios base URL:', 'http://localhost:4000');
+console.log('Recaptcha public key:', process.env.RECPATCHA_PK);
+console.log('Sitemap hostname:', process.env.BASE_URL_SITEMAP);
+// ... add more console logs as needed

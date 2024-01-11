@@ -73,7 +73,7 @@
               <b-button
                 v-if="provData.last_name"
                 v-b-tooltip.hover
-                title="Appuyez pour annuler cet reservation"
+                title="Appuyez pour annuler cette reservation"
                 class="float-left"
                 variant="danger"
                 @click="showConfirmation()"

@@ -62,6 +62,8 @@ export default {
     QuckView,
     ProductItem,
     Paginations,
+    Tests,
+    AllProducts,
   },
   mixins:[formUltis],
   data() {

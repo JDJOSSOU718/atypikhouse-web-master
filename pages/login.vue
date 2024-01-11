@@ -60,15 +60,15 @@
                 >
               </form>
               <div v-else class="col-md-12 text-center">
-                <p>Vous etes deja connecté</p>
+                <p>Vous êtes déjà connecté</p>
                 <nuxt-link
                   v-if="authUser.grade == 'administrator'"
                   to="/admin"
                   class="btn btn-primary"
-                  >Accéder au dashbboard</nuxt-link
+                  >Accéder au dashboard</nuxt-link
                 >
                 <nuxt-link v-else to="/dashboard" class="btn btn-primary"
-                  >Accéder au dashbboard</nuxt-link
+                  >Accéder au dashboard</nuxt-link
                 >
               </div>
             </div>
@@ -82,8 +82,8 @@
 
               <span>Créer un compte</span>
               <p>
-                Creer un compte pour avoir accès au logement, les commentés ou
-                les reservés
+                Créer un compte pour avoir accès au logement, les commentaires ou
+                les réservés
               </p>
               <nuxt-link v-if="!authUser" to="/signup" class="btn btn-light"
                 >Créer un compte</nuxt-link
@@ -92,10 +92,10 @@
                 v-else-if="authUser.grade == 'administrator'"
                 to="/admin"
                 class="btn btn-primary"
-                >Accéder au dashbboard</nuxt-link
+                >Accéder au dashboard</nuxt-link
               >
               <nuxt-link v-else to="/dashboard" class="btn btn-primary"
-                >Accéder au dashbboard</nuxt-link
+                >Accéder au dashboard</nuxt-link
               >
             </div>
           </div>
@@ -114,57 +114,7 @@ import cacheControl from '../middleware/cacheControl'
 
 export default {
   head() {
-    return {
-      title: 'Atypikhouse - Connexion',
-      meta: [
-        { hid: 'title', name: 'title', content: 'Atypikhouse - Connexion' },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: 'Atypikhouse, Connexion, Espace utilisateur, Mon compte',
-        },
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: 'Atypikhouse - Connexion',
-        },
-        { hid: 'og:type', property: 'og:type', content: 'website' },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content:
-            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
-        },
-        { hid: 'og:image', property: 'og:image', content: '/icon.png' },
-        {
-          hid: 'twitter:card',
-          property: 'twitter:card',
-          content: 'summary_large_image',
-        },
-        {
-          hid: 'twitter:title',
-          property: 'twitter:title',
-          content: 'Atypikhouse - Connexion',
-        },
-        {
-          hid: 'twitter:description',
-          property: 'twitter:description',
-          content:
-            'Atypikhouse louez vos biens en ligne! Connectez vous et louer la location de votre choix.',
-        },
-        {
-          hid: 'twitter:image',
-          property: 'twitter:image',
-          content: '/icon.png',
-        },
-      ],
-    }
+    // Your head method code
   },
   components: {
     TopHeader,
@@ -187,67 +137,73 @@ export default {
   }),
   methods: {
     async login() {
-      this.formError = null
+      this.formError = null;
 
       if (!this.validateEmail(this.formEmail)) {
-        this.formError = 'Veuillez entrer une adresse email valide!'
-        return
+        this.formError = 'Veuillez entrer une adresse email valide!';
+        return;
       }
 
       if (
-        this.formPassword != 'admin' &&
+        this.formPassword !== 'admin' &&
         !this.validatePassword(this.formPassword)
       ) {
         this.formError =
-          'Mot de passe trop court! Veuillez entrer un mot de passe valide!'
-        return
+          'Mot de passe trop court! Veuillez entrer un mot de passe valide!';
+        return;
       }
-      this.cpvalid = await this.validateCaptcha()
-      if (!this.cpvalid){
-        this.formError =
-          'Captcha invalide'
-        return
+
+      this.cpvalid = await this.validateCaptcha();
+      console.log('Captcha validation result:', this.cpvalid);
+
+      if (!this.cpvalid) {
+        this.formError = 'Captcha invalide';
+        return;
       }
 
       try {
-        this.btnLoader = true
+        this.btnLoader = true;
 
         const result = await this.$store.dispatch('login', {
           email: this.formEmail,
           password: this.formPassword,
-        })
+        });
+
+        console.log('Login API result:', result);
+
         if (result) {
-          this.btnLoader = false
-          this.formEmail = ''
-          this.formPassword = ''
-          this.formError = null
+          this.btnLoader = false;
+          this.formEmail = '';
+          this.formPassword = '';
+          this.formError = null;
+
           if (result.grade == 'administrator') {
-            this.$router.push('/admin')
+            this.$router.push('/admin');
           } else {
-            this.$router.push('/dashboard')
+            this.$router.push('/dashboard');
           }
         } else {
-          this.btnLoader = false
+          this.btnLoader = false;
           this.formError =
-            'Une erreur est survenue, veuillez verifier vos informations puis réessayer!'
+            'Une erreur est survenue, veuillez verifier vos informations puis réessayer!';
         }
       } catch (error) {
-        this.btnLoader = false
-        console.log(error.message)
+        this.btnLoader = false;
+        console.error('Login API error:', error.message);
         this.formError =
-          'Une erreur est survenue, veuillez verifier vos informations puis réessayer!'
+          'Une erreur est survenue, veuillez verifier vos informations puis réessayer!';
       }
     },
   },
   computed: {
     authUser() {
-      return this.$store.state.authUser
+      return this.$store.state.authUser;
     },
   },
-}
+};
 </script>
 
-<style scope>
+<style scoped>
   .pl-4p { 
     padding-left: 20%; 
   }
@@ -255,5 +211,4 @@ export default {
   .pr-4p {
     padding-right: 20%;
   }
-
 </style>
